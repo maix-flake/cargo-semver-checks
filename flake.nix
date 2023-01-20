@@ -19,15 +19,15 @@
         cargo_semver_checks = pkgs.fetchFromGitHub {
           owner = "obi1kenobi";
           repo = "cargo-semver-checks";
-          rev = "346e10b89c1e67037c82bcdb674d30dd3b6ca86b";
-          sha256 = "sha256-upGVWCK3gEPH6BZ7W410AnQPIWOCeD4sawQqPLRowfw=";
+          rev = "f6b41f43cd8c70683e7fd901c34c76250baf3ef5";
+          sha256 = "sha256-+YRyShALdDQDfh5XDY36R29SzbBjlT8mCIucwJ++KrQ=";
         };
         naersk' = pkgs.callPackage naersk {};
       in {
         # For `nix build` & `nix run`:
         packages.default = naersk'.buildPackage {
           src = "${cargo_semver_checks}";
-          nativeBuildInputs = with pkgs; [pkg-config];
+          nativeBuildInputs = with pkgs; [pkg-config perl];
           buildInputs = with pkgs; [openssl];
         };
 
